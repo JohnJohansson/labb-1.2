@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<!--Things put in this page shows up on all pages and connects back to the _ViewStart.cshtml file-->
+<head>
+    <!--Connects to the stylesheet in wwwrot-->
+    <link rel="stylesheet" href="~/css/reset.css" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    <!--Connects the the pages with the ViewData["Title"] = "Startsida";
+        code in this example the title is startsida the ViewData["Title"]is a var-->
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    @{
+        var date = DateTime.Now.ToString("yyyy/MM/dd");}
+    <header>
+        <div class="logo">Logo</div>
+        <div class="date">Dagens datum är: @date </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/">Startsidan</a>
+                    </li>
+                    <li>
+                        <a href="/About">Om sidan</a>
+                    </li>
+
+                    <li>
+                        <a href="/Razor">Razor</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="main-content"><div class="title"><h1>@ViewData["h1"]</h1></div><div class="body"> @ViewData["Body"] <p>@ViewData["Body2"] @ViewData["Body3"]  </p></div></div>
+    </div> <!--Main wrapper end-->
+    <footer>
+        <div class="created">
+            Av John Johansson - Kontakta mig via e-post: <a href="timmie_johansson01@hotmail.com">timmie_johansson01@hotmail.com</a>
+        </div>
+    </footer>
+
+    <main>@RenderBody()</main>
+</body>
+</html>

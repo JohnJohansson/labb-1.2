@@ -1,0 +1,71 @@
+﻿@page
+@model labb_1._2_v3.Pages.AboutModel
+@{
+    //declaring the date and time and putting it into a var
+    var date = DateTime.Now;
+
+    string[] name = { "bob", "bob2", "bob3" };
+
+    //To check the day of the week an empty var for the result
+    var result = "";
+    //checking the day of week
+    var checkDay = DateTime.Now.DayOfWeek;
+    //making it into a string
+    var monday = checkDay.ToString();
+
+    //if it is monday print out the text
+    @if (monday == "Monday")
+    {
+        result = "Idag är det måndag";
+    }
+    // if its anything else print out this
+    else
+    {
+        result = "Idag är det inte måndag";
+    }
+
+
+    ViewData["Title"] = "Razor";
+
+
+    string[] courses = {
+        "DT057G Webbutveckling I",
+        "DT093G Webbutveckling II",
+        "DT173G Webbutveckling III",
+        "DT163G Digital bildbehandling för webb",
+        "DT003G Databaser",
+        "DT084G Introduktion till JavaScript",
+        "GD008G Typografi och form för webb",
+        "IK060G Projektledning",
+        "DT071G Programmering i C#",
+        "DT162G Javascriptbaserad webbutveckling",
+        "DT068G Webbanvändbarhet",
+        "DT152G Webbdesign för CMS" };
+
+
+
+    ViewData["h1"] = "Razor";
+    //using the var by sending it to body
+
+    //result is sending the result from the day of the week to the Layout page
+    ViewData["Body"] = @result;
+    //date is sending todays date and time
+    ViewData["Body2"] = @date;
+
+    //courses skickar bara System.String[] och Course går inte att få tag på eftersom den ligger i loopen antar jag?
+    //Så jag tänkte att jag kanske borde kunna skicka courses och sen köra loopen i layout, det här funka inte.
+    //Jag har cokså lyckats skriva ut första kursen i arrayen men inte alla av dom.
+    ViewData["Body3"] = @courses;
+
+}
+@*Så det här skriver ut min kod till razor sidan*@
+<div class="main-content">
+
+    <ul>
+        @foreach (var course in courses)
+        {
+            <li>@course</li>
+        }
+
+    </ul>
+</div>
