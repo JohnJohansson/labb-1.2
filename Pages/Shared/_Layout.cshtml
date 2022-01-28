@@ -11,6 +11,7 @@
 </head>
 <body>
     @{
+        //prints out the date and time but only the date parts
         var date = DateTime.Now.ToString("yyyy/MM/dd");}
     <header>
         <div class="logo">Logo</div>
@@ -34,14 +35,14 @@
                 </ul>
             </nav>
         </aside>
-        <div class="main-content"><div class="title"><h1>@ViewData["h1"]</h1></div><div class="body"> @ViewData["Body"] <p>@ViewData["Body2"] @ViewData["Body3"]  </p></div></div>
+        <main class="main-content"><div class="title"><h1>@ViewData["h1"]</h1><h2>@ViewData["h2"]</h2></div><div class="body"> @ViewData["Body"] @RenderBody()</div></main>
     </div> <!--Main wrapper end-->
     <footer>
         <div class="created">
-            Av John Johansson - Kontakta mig via e-post: <a href="timmie_johansson01@hotmail.com">timmie_johansson01@hotmail.com</a>
+            <span id="printJS"></span> <a href="timmie_johansson01@hotmail.com">timmie_johansson01@hotmail.com</a>
         </div>
     </footer>
 
-    <main>@RenderBody()</main>
+    <script src="~/js/main.js"></script>
 </body>
 </html>

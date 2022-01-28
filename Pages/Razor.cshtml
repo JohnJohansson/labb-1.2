@@ -1,10 +1,11 @@
 ﻿@page
 @model labb_1._2_v3.Pages.AboutModel
 @{
+    //changes the title of the page
+    ViewData["Title"] = "Razor";
+
     //declaring the date and time and putting it into a var
     var date = DateTime.Now;
-
-    string[] name = { "bob", "bob2", "bob3" };
 
     //To check the day of the week an empty var for the result
     var result = "";
@@ -24,10 +25,7 @@
         result = "Idag är det inte måndag";
     }
 
-
-    ViewData["Title"] = "Razor";
-
-
+    // a array with the courses I had
     string[] courses = {
         "DT057G Webbutveckling I",
         "DT093G Webbutveckling II",
@@ -42,26 +40,19 @@
         "DT068G Webbanvändbarhet",
         "DT152G Webbdesign för CMS" };
 
-
-
+    //changes the text of the H1 in the main-content class.
     ViewData["h1"] = "Razor";
-    //using the var by sending it to body
-
-    //result is sending the result from the day of the week to the Layout page
-    ViewData["Body"] = @result;
-    //date is sending todays date and time
-    ViewData["Body2"] = @date;
-
-    //courses skickar bara System.String[] och Course går inte att få tag på eftersom den ligger i loopen antar jag?
-    //Så jag tänkte att jag kanske borde kunna skicka courses och sen köra loopen i layout, det här funka inte.
-    //Jag har cokså lyckats skriva ut första kursen i arrayen men inte alla av dom.
-    ViewData["Body3"] = @courses;
-
+    ViewData["h2"] = "Information";
 }
-@*Så det här skriver ut min kod till razor sidan*@
-<div class="main-content">
+<div class="razor-date"><span>Datum/klockslag: </span> @date</div>
 
+<div class="check-monday">@result</div>
+
+@*prints out the array courses into a li with a foreach loop*@
+<div class="print-courses">
+    <p>Kurser jag läst</p>
     <ul>
+
         @foreach (var course in courses)
         {
             <li>@course</li>
